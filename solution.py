@@ -28,10 +28,9 @@ text = text.replace('/', '')
 text = text[2:]
 text = text[:text.find('tr')]
 text = text.replace('>', ' ')
-print(text)
+text = text.replace(',', '.')
 
 for i in range(10):
     c = text[:text.find('  ')]
     elements.append(c)
     text = text[text.find('  ') + 1:]
-print(elements)

@@ -3,17 +3,17 @@ Developers: Revtova L. (%)
             Arkhipova A. (%)
 
 """
-TOTAL = ''
-
 import urllib.request
-url = 'http://www.nfl.com/player/brycepetty/2552369/profile'
-f = urllib.request.urlopen(url)
-s = f.read()
-text = str(s)
-#print(text)
-part_name = text.find("player-name")
-name = text[text.find('>',part_name)+1:text.find('&',part_name)]
-print(name)
+elements = []
+out_file = open('output.txt', 'w')
+with open('input.txt', 'r') as inp_file:
+    line = inp_file.readlines()
+for url in line:
+    f = urllib.request.urlopen(url)
+    s = f.read()
+    text = str(s)
+    part_name = text.find("player-name")
+    name = text[text.find('>',part_name)+1:text.find('&',part_name)]
 
 T = 'total'
 total = text.find(T)
@@ -30,7 +30,6 @@ text = text[:text.find('tr')]
 text = text.replace('>', ' ')
 print(text)
 
-elements = []
 for i in range(10):
     c = text[:text.find('  ')]
     elements.append(c)
